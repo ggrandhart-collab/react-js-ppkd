@@ -3,43 +3,72 @@ import heroImg from './assets/hero.png';
 import reactLogo from './assets/react.svg';
 import viteLogo from './assets/vite.svg';
 import './App.css';
+import { BrowserRouter, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import DataPeserta from './components/DataPeserta';
 import { Peserta } from './components/Peserta';
 import FormPeserta from './components/FormPeserta';
+import Dashboard from './pages/Dashboard';
+import Login from "./pages/Login";
+import MainLayout from './pages/MainLayout';
+import ListUser from './pages/user/List';
+// import Login from "./pages/Login";
 
-  function App() {
-    const [listPeserta, setListPeserta] = useState(Peserta);
-    const [editPeserta, setEditPeserta] = useState(null);
-    // const listPeserta = Peserta;
 
-      const handleSubmit = (dataPeserta) => {
-        if(editPeserta) {
-          setListPeserta.map((item) => (item.id === dataPeserta.id ? dataPeserta : item))
-          setEditPeserta(null);
-        }else {
-        setListPeserta([...listPeserta, dataPeserta])
-        }
-        console.log(dataPeserta);
-      };
+//function NewPeserta ({nama, jurusan}) {..
+//}
+function App() {
+  return (
+    <>
+      {/* <Login />; */}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Navigate to="/login" replace />} />
+          <Route path="/login" element={<Login />}></Route>
+          <Route element ={<MainLayout />}>
+          <Route path="/dashboard" element={<Dashboard />}></Route>
+          <Route path="/user" element={<ListUser />}></Route>
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </>
+  );
+}
 
-      const handleHapus=(id) =>{
-        setListPeserta(listPeserta.filter((item) => item.id !==id));
-        if(id=== editPeserta.id) {
-          setListPeserta(null);
-        }
-      };
+export default App;
 
-    return (
-      <>
-        <FormPeserta onSimpan={handleSubmit} pesertaEdit={editPeserta} /> 
-        {/* map: looping jg */}
-        {listPeserta.map((item) => (
-          <DataPeserta key={item.id} peserta={item} onEdit={setEditPeserta} onHapus={handleHapus}/>
-        ))}
+  // function App() {
+  //   const [listPeserta, setListPeserta] = useState(Peserta);
+  //   const [editPeserta, setEditPeserta] = useState(null);
+  //   // const listPeserta = Peserta;
 
-      </>
-    )
-  }
+  //     const handleSubmit = (dataPeserta) => {
+  //       if(editPeserta) {
+  //         setListPeserta.map((item) => (item.id === dataPeserta.id ? dataPeserta : item))
+  //         setEditPeserta(null);
+  //       }else {
+  //       setListPeserta([...listPeserta, dataPeserta])
+  //       }
+  //       console.log(dataPeserta);
+  //     };
+
+  //     const handleHapus=(id) =>{
+  //       setListPeserta(listPeserta.filter((item) => item.id !==id));
+  //       if(id=== editPeserta.id) {
+  //         setListPeserta(null);
+  //       }
+  //     };
+
+  //   return (
+  //     <>
+  //       <FormPeserta onSimpan={handleSubmit} pesertaEdit={editPeserta} /> 
+  //       {/* map: looping jg */}
+  //       {listPeserta.map((item) => (
+  //         <DataPeserta key={item.id} peserta={item} onEdit={setEditPeserta} onHapus={handleHapus}/>
+  //       ))}
+
+  //     </>
+  //   )
+  
 
 //     listPeserta.map((item) => {
 //       <DataPeserta key{ClipboardItem.id}
@@ -196,5 +225,3 @@ return (
 }
 */
 
-
-export default App;

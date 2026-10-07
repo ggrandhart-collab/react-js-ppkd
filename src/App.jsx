@@ -1,36 +1,30 @@
-import { useState } from 'react';
-import heroImg from './assets/hero.png';
-import reactLogo from './assets/react.svg';
-import viteLogo from './assets/vite.svg';
-import './App.css';
-import { BrowserRouter, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
-import DataPeserta from './components/DataPeserta';
-import { Peserta } from './components/Peserta';
-import FormPeserta from './components/FormPeserta';
-import Dashboard from './pages/Dashboard';
+import { useState } from "react";
+import heroImg from "./assets/hero.png";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "./assets/vite.svg";
+import "./App.css";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+
+// Route A: A
 import Login from "./pages/Login";
-import MainLayout from './pages/MainLayout';
-import ListUser from './pages/user/List';
-// import Login from "./pages/Login";
 
+import MainLayout from "./pages/MainLayout";
+import Dashboard from "./pages/Dashboard";
+import ListUser from "./pages/user/List";
 
-//function NewPeserta ({nama, jurusan}) {..
-//}
 function App() {
   return (
-    <>
-      {/* <Login />; */}
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Navigate to="/login" replace />} />
-          <Route path="/login" element={<Login />}></Route>
-          <Route element ={<MainLayout />}>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Navigate to="/login" replace />} />
+        {/* <Route path="/" element={<Login />} /> */}
+        <Route path="/login" element={<Login />}></Route>
+        <Route element={<MainLayout />}>
           <Route path="/dashboard" element={<Dashboard />}></Route>
           <Route path="/user" element={<ListUser />}></Route>
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

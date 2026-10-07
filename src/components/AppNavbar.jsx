@@ -2,20 +2,20 @@ import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 
 export default function AppNavbar() {
     return (
-        <Navbar expand="lg" bg="dark" variant="dark" className="shadow-sm mb-4">
+        <Navbar expand="lg" bg="primary" variant="dark" className="shadow-sm mb-4">
             <Container>
                 <Navbar.Brand href="/login">Point OF Sales | PPKD JP</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                         <Nav.Link href="#dashboard">Home</Nav.Link>
-                        <Nav.Link href="#link">Link</Nav.Link>
-
+                        <Nav.Link href="/category">Category</Nav.Link>
+                        
                     </Nav>
                     <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                         <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.2">
-                            Another action
+                        <NavDropdown.Item href="/category">
+                        
                         </NavDropdown.Item>
                         <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
                         <NavDropdown.Divider />
